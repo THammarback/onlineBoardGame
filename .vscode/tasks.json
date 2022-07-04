@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start client",
+      "type": "shell",
+      "command": "cd client; npm run dev",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "develop"
+      },
+      "runOptions": {
+        "runOn": "default"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start server",
+      "type": "shell",
+      "command": "cd server; npm run dev",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "group": "develop"
+      },
+      "runOptions": {
+        "runOn": "default"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start project",
+      "dependsOn": [
+        "Start client",
+        "Start server"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
