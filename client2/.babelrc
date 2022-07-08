@@ -1,8 +1,0 @@
-{
-  "presets": [
-    "solid",
-    "@babel/preset-typescript",
-    "@babel/preset-env"
-  ],
-  "plugins": []
-}

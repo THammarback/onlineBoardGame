@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import {createServer} from "http"
 import {Server, Socket} from "socket.io"
-import Session from './Session'
+import Session from './Session.js'
 
 dotenv.config({path: '../.env'})
 
@@ -17,7 +17,7 @@ const io = new Server(httpServer, {
   }
 })
 
-app.get('/', (req, res) => {
+app.get('/debug', (req, res) => {
   res.send(`<pre>${JSON.stringify(
     Object.entries(Session.instances).map(([sessionName, value])=>(
       {
@@ -28,6 +28,8 @@ app.get('/', (req, res) => {
       }
     )), null, 2)}</pre>`)
 })
+
+app.use(express.static('../www'))
 
 io.on("connection", (socket) => {
   let session:Session

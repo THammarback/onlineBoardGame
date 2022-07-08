@@ -1,10 +1,9 @@
 import {Component, For, JSXElement} from 'solid-js';
-import {Session, formElement } from '../types';
-import styles from './Chat.module.css';
+import {Session, formElement } from './types';
+// import styles from './Chat.module.css';
 
 
 const Chat:Component<{session:Session}> = ({session}) => {
-
   const ChatItem:Component<{children:JSXElement}> = ({children}) => {
     return (
       <li>{children}</li>
@@ -27,8 +26,8 @@ const Chat:Component<{session:Session}> = ({session}) => {
   }
 
   return(
-    <section class={styles.chat}>
-      <ol class={styles.chatList} id="chatList">
+    <section class={"chat"}>
+      <ol class={"chatList"} id="chatList">
         <For each={session.messages.get()}>{(message, i) =>
           <ChatItem>{message}</ChatItem>
         }</For>

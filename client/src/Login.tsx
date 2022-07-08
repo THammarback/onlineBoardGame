@@ -1,6 +1,6 @@
 import type {Component} from 'solid-js';
-import type {formElement, Session} from '../types';
-import styles from './Login.module.css';
+import type {formElement, Session} from './types';
+// import styles from './Login.module.css';
 
 
 
@@ -41,7 +41,7 @@ const Login: Component<{session:Session}> = ({session}) =>{
   }
 
   return (
-    <section class={styles.login}>
+    <section class="login">
       <h2>Join or create a D&D Session.</h2>
       <div>
         <form onsubmit={onSubmit}>
