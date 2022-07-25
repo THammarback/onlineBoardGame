@@ -1,6 +1,9 @@
 import { Socket } from "socket.io"
 import Asset from "./Asset"
 
+const emptySessionAliveTime = 5000
+const sessionAliveTimeouts: {[key:string]: NodeJS.Timeout} = {}
+
 class Session{
   static instances:{[key: string]:Session} = {}
   sockets : {[key:string]:Socket} = {}
@@ -24,6 +27,11 @@ class Session{
     if(name in Object.values(this.names)){
       throw Error("There are already someone named: "+name+" in this session with key: "+this.key+".")
     }
+
+    if(this.key in sessionAliveTimeouts){
+      clearTimeout(sessionAliveTimeouts[this.key])
+    }
+
     socket.join(this.key)
     this.sockets[socket.id] = socket
     this.names[socket.id] = name
@@ -36,7 +44,11 @@ class Session{
     delete this.sockets[socket.id]
     delete this.names[socket.id]
     if(!Object.keys(this.sockets).length){
-      Session.delete(this.key)
+
+      sessionAliveTimeouts[this.key] = setTimeout(()=>{
+        console.log(`Removing session "${this.key}" due to no users connected.`)
+        Session.delete(this.key)
+      }, emptySessionAliveTime)
     }
   }
 

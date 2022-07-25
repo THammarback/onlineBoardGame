@@ -1,7 +1,6 @@
 import {State} from './helpers'
 import { Socket } from "socket.io-client";
 
-type Session = {socket:Socket, messages : State<string[]>, key: State<string>}
-type formElement = EventTarget & {[keys: string]: HTMLInputElement}
+type Game = {socket:Socket, messages : State<string[]>, key: State<string>}
 
-export type {Session, formElement}
+export type {Game}

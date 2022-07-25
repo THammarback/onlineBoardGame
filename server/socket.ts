@@ -1,5 +1,5 @@
 import { Socket } from "socket.io";
-import Session from "./Session";
+import Session from "./Session.js";
 
 const onConnection = (socket: Socket) => {
     let session:Session

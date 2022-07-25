@@ -1,0 +1,95 @@
+
+.container{
+    --width:70vw;
+    --height:70vh;
+    width:100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.container #resizeDot{
+    --pick-radius:5px;
+    position:fixed;
+    top: calc(var(--height) - var(--pick-radius));
+    left: calc(var(--width) - var(--pick-radius));
+    width: calc(var(--pick-radius)*2);
+    height: calc(var(--pick-radius)*2);
+    background-color: red;
+    border-radius: 100%;
+}
+
+.container .leftCol{
+    height: 100vh;
+}
+
+.container .leftCol #imageArea{
+    display: block;
+    background-color: var(--foreground-color);
+    width: var(--width);
+    height: var(--height);
+}
+
+.container .rightCol{
+    height: 100vh;
+    display: table-cell;
+}
+
+.chat{
+    background-color: var(--background-color);
+    height:calc(100vh - var(--height))
+}
+
+.chat .chatList{
+    display: flex;
+    flex-direction: column-reverse;
+    height:calc(100vh - var(--height) - 1em - 12px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--light-font-color);
+    font-size: 1em;
+    overflow-y: scroll;
+}
+.chat .chatList li{
+    line-break: anywhere;
+}
+.chat form{
+    position: relative;
+    display: flex;
+}
+.chat form input[type=text]{
+  --border-width: 2px;
+  
+  color: var(--light-font-color);
+  flex: 1;
+  border-radius: 5px;
+  font-size: 1em;
+  padding: 5px 0 5px 0;
+  display: inline-block;
+  background-color: var(--foreground-color);
+  border:none;
+  outline:none;
+  background-image: linear-gradient(var(--action-color), var(--action-color));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s;
+  background-position: 50% 100%;
+
+}
+
+.chat form input[type=text]:focus{
+    background-size: 100% 2px;
+}
+
+
+
+
+.chat form input[type=submit]{
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--white-color);
+    border-radius: 5px;
+    background-color: var(--highlight-color);
+}

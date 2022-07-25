@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Start client",
+      "label": "Client start",
       "type": "shell",
       "command": "cd client; npm run dev",
       "presentation": {
@@ -16,7 +16,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Start server",
+      "label": "Server start",
       "type": "shell",
       "command": "cd server; npm run dev",
       "presentation": {
@@ -32,8 +32,8 @@
     {
       "label": "Start project",
       "dependsOn": [
-        "Start client",
-        "Start server"
+        "Client start",
+        "Server start"
       ],
       "problemMatcher": []
     }
